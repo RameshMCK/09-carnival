@@ -1,0 +1,36 @@
+<h1 class="display-4 p-2">Add Reservations</h1>
+
+<%= link_to new_reservation_path(@reservation), class: 'btn btn-outline-primary' do %>
+  <i class="fa fa-plus-circle"></i> Add Reservation</a>
+<% end %>
+
+
+
+<table class="table table-striped">
+  <thead class="thead-inverse">
+    <tr>
+      <th></th>
+      <th>Reservation Id</th>
+      <th>Ship Name</th>
+      <th>Room</th>
+      <th>Level</th>
+      <th>Cost</th>
+      </tr>
+  </thead>
+  <tbody>
+    <% @reservations.each do |s| %>
+      <tr>
+        <td>
+          <%= link_to reservation_path(s), method: :delete do %>
+            <i class="fa fa-trash-o"></i>
+          <% end %>
+        </td>
+        <td><%= s.id %></td>
+        <td><%= s.cruise.ship.name %></td>
+        <td><%= s.room %></td>
+        <td><%= s.level %></td>
+        <td><%= s.cost %></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>

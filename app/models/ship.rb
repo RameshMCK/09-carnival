@@ -1,18 +1,19 @@
 # == Schema Information
 #
-# Table name: cities
+# Table name: ships
 #
 #  id         :integer          not null, primary key
 #  name       :string           not null
-#  country    :string           not null
 #  photo      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class City < ApplicationRecord
-   has_and_belongs_to_many :cruises
-   validates :name , :country  , presence: true
-   validates :name , uniqueness: {scope: [:country]}
-   
+class Ship < ApplicationRecord
+    has_many :cabins #, dependent: delete_all
+    has_many :cruises
+   validates :name , presence: true
+   validates :name , uniqueness: true
+    
+    
 end
